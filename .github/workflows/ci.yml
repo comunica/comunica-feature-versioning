@@ -19,6 +19,8 @@ jobs:
         run: git config --global core.autocrlf input
       - name: Check out repository
         uses: actions/checkout@v3
+      - name: Install Kyoto Cabinet
+        run: sudo .github/install-kc-ci.sh
       - name: Load cache
         uses: actions/cache@v2
         with:
@@ -57,6 +59,8 @@ jobs:
           node-version: '16.x'
       - name: Check out repository
         uses: actions/checkout@v3
+      - name: Install Kyoto Cabinet
+        run: sudo .github/install-kc-ci.sh
       - name: Load cache
         uses: actions/cache@v2
         with:
@@ -109,6 +113,8 @@ jobs:
           node-version: '16.x'
       - name: Check out repository
         uses: actions/checkout@v3
+      - name: Install Kyoto Cabinet
+        run: sudo .github/install-kc-ci.sh
       - name: Load cache
         uses: actions/cache@v2
         with:

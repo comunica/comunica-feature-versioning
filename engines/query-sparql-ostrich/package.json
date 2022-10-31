@@ -1,0 +1,58 @@
+{
+  "name": "@comunica/query-sparql-ostrich",
+  "version": "0.0.1",
+  "description": "A Comunica engine for link traversal-based query evaluation",
+  "lsd:module": true,
+  "main": "lib/index.js",
+  "typings": "lib/index",
+  "repository": "https://github.com/comunica/comunica-feature-versioning/tree/master/packages/query-sparql-ostrich",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "keywords": [
+    "comunica",
+    "sparql",
+    "engine",
+    "query",
+    "update",
+    "sparql engine",
+    "sparql query",
+    "sparql update",
+    "sparql 1.1",
+    "versioning",
+    "ostrich"
+  ],
+  "license": "MIT",
+  "bin": {
+    "comunica-sparql-ostrich": "bin/query.js",
+    "comunica-sparql-ostrich-http": "bin/http.js",
+    "comunica-dynamic-sparql-ostrich": "bin/query-dynamic.js"
+  },
+  "bugs": {
+    "url": "https://github.com/comunica/comunica/issues"
+  },
+  "homepage": "https://comunica.dev/",
+  "files": [
+    "components",
+    "config",
+    "bin/**/*.d.ts",
+    "bin/**/*.js",
+    "lib/**/*.d.ts",
+    "lib/**/*.js",
+    "engine-default.js"
+  ],
+  "dependencies": {
+    "@comunica/query-sparql": "^2.4.3",
+    "@comunica/actor-init-query": "^2.4.3",
+    "@comunica/runner-cli": "^2.4.0"
+  },
+  "scripts": {
+    "build": "npm run build:ts",
+    "build:ts": "node \"../../node_modules/typescript/bin/tsc\"",
+    "prepare": "comunica-compile-config config/config-default.json > engine-default.js"
+  },
+  "browser": {
+    "./lib/index.js": "./lib/index-browser.js"
+  }
+}

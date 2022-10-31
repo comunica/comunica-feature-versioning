@@ -1,0 +1,11 @@
+{
+  "source": "lib",
+  "ignorePackagePaths": [
+    "engines/query-sparql-ostrich"
+  ],
+  "ignoreComponents": [
+    "Headers",
+    "RDF.Stream"
+  ],
+  "modulePrefix": {}
+}

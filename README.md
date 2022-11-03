@@ -19,14 +19,20 @@
 This is a monorepo that contains packages for allowing [Comunica](https://github.com/comunica/comunica) to query over RDF archives that contain multiple versions of a dataset.
 If you want to _use_ an versioning-enabled Comunica engine, have a look at [Comunica SPARQL OSTRICH](https://github.com/comunica/comunica-feature-versioning/tree/master/engines/query-sparql-ostrich).
 
-Concretely, link traversal is enabled in the following engines:
+Concretely, versioning is enabled in the following engines:
 
 * Query engine configurations:
   * [Comunica SPARQL OSTRICH](https://github.com/comunica/comunica-feature-versioning/tree/master/engines/query-sparql-ostrich): A Comunica query engine that enables versioned querying over [OSTRICH](https://github.com/rdfostrich/ostrich) archives.
 
 These engines make use of the following packages:
 
-TODO
+* Quad Pattern Resolving:
+  * [OSTRICH](https://github.com/comunica/comunica-feature-versioning/tree/master/packages/actor-rdf-resolve-quad-pattern-ostrich): Resolves quad patterns to OSTRICH stores.
+* Query Operation:
+  * [Contextify Version](https://github.com/comunica/comunica-feature-versioning/tree/master/packages/actor-query-operation-contextify-version): Rewrites queries by assuming named graphs references to versions.
+* Other:
+  * [Context entries](https://github.com/comunica/comunica-feature-versioning/tree/master/packages/context-entries-versioning): Reusable context key definitions for versioning.
+  * [Types](https://github.com/comunica/comunica-feature-versioning/tree/master/packages/types-versioning): Reusable Typescript interfaces and types for versioning.
 
 **Warning: All packages in this repo should be considered unstable, and breaking changes may occur at any time.**
 

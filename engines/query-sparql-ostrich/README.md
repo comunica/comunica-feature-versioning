@@ -35,17 +35,15 @@ $ npm install -g @comunica/query-sparql-ostrich@next
 
 ## Usage
 
-**TODO: update me**
-
-Show 100 triples from http://fragments.dbpedia.org/2015-10/en:
+Show 100 triples from an OSTRICH store at version 1:
 
 ```bash
-$ comunica-sparql-ostrich https://www.rubensworks.net/ \
-  "SELECT DISTINCT * WHERE {
-       <https://www.rubensworks.net/#me> <http://xmlns.com/foaf/0.1/knows> ?p.
-       <https://ruben.verborgh.org/profile/#me> <http://xmlns.com/foaf/0.1/knows> ?p.
-       ?p <http://xmlns.com/foaf/0.1/name> ?name.
-   }" --lenient
+$ comunica-sparql-ostrich ostrichFile@dataset.ostrich \
+  "SELECT * WHERE {
+    GRAPH <version:1> {
+      ?s ?p ?o
+    }
+  } LIMIT 100"
 ```
 
 Show the help with all options:
@@ -68,12 +66,12 @@ const QueryEngine = require('@comunica/query-sparql-ostrich').QueryEngine;
 const myEngine = new QueryEngine();
 
 const bindingsStream = await myEngine.queryBindings(`
-  SELECT DISTINCT * WHERE {
-      <https://www.rubensworks.net/#me> <http://xmlns.com/foaf/0.1/knows> ?p.
-      <https://ruben.verborgh.org/profile/#me> <http://xmlns.com/foaf/0.1/knows> ?p.
-      ?p <http://xmlns.com/foaf/0.1/name> ?name.
-  }`, {
-    sources: ['https://www.rubensworks.net/'],
+  SELECT * WHERE {
+    GRAPH <version:1> {
+      ?s ?p ?o
+    }
+  } LIMIT 100`, {
+    sources: [{ type: 'ostrichFile', value: 'dataset.ostrich' }],
     lenient: true,
 });
 
@@ -106,10 +104,10 @@ _[**Read more** about querying an application](https://comunica.dev/docs/query/g
 
 ### Usage as a SPARQL endpoint
 
-Start a webservice exposing https://www.rubensworks.net/ via the SPARQL protocol, i.e., a _SPARQL endpoint_.
+Start a webservice exposing an OSTRICH dataset via the SPARQL protocol, i.e., a _SPARQL endpoint_.
 
 ```bash
-$ comunica-sparql-ostrich-http https://www.rubensworks.net/ --lenient
+$ comunica-sparql-ostrich-http ostrichFile@dataset.ostrich
 ```
 
 Show the help with all options:

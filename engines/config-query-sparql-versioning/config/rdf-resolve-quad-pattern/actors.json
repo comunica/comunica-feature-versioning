@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/config-query-sparql-versioning/^0.0.0/components/context.jsonld"
+    "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/config-query-sparql-versioning/^2.0.0/components/context.jsonld"
   ],
   "import": [
     "ccqsv:config/rdf-resolve-quad-pattern/actors/ostrich.json"

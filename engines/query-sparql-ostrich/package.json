@@ -1,6 +1,6 @@
 {
   "name": "@comunica/query-sparql-ostrich",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "A Comunica engine for link traversal-based query evaluation",
   "lsd:module": true,
   "main": "lib/index.js",
@@ -46,6 +46,7 @@
     "@comunica/query-sparql": "^2.4.3",
     "@comunica/actor-init-query": "^2.4.3",
     "@comunica/runner-cli": "^2.4.0",
+    "@comunica/config-query-sparql-versioning": "^2.0.0",
     "@comunica/actor-query-operation-contextify-version": "^2.0.0",
     "@comunica/actor-rdf-resolve-quad-pattern-ostrich": "^2.0.0"
   },

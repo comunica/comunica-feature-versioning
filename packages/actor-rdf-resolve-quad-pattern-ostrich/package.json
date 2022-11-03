@@ -1,0 +1,49 @@
+{
+  "name": "@comunica/actor-rdf-resolve-quad-pattern-ostrich",
+  "version": "2.0.0",
+  "description": "A ostrich rdf-resolve-quad-pattern actor",
+  "lsd:module": true,
+  "main": "lib/index.js",
+  "typings": "lib/index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/comunica/comunica.git",
+    "directory": "packages/actor-rdf-resolve-quad-pattern-ostrich"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "keywords": [
+    "comunica",
+    "actor",
+    "rdf-resolve-quad-pattern",
+    "ostrich"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/comunica/comunica-feature-versioning/issues"
+  },
+  "homepage": "https://comunica.dev/",
+  "files": [
+    "components",
+    "lib/**/*.d.ts",
+    "lib/**/*.js"
+  ],
+  "dependencies": {
+    "@comunica/core": "^2.4.0",
+    "@comunica/context-entries": "^2.4.0",
+    "@comunica/context-entries-versioning": "^0.0.1",
+    "@comunica/bus-rdf-resolve-quad-pattern": "^2.4.0",
+    "@comunica/types-versioning": "^0.0.1",
+    "asynciterator": "^3.7.1",
+    "ostrich-bindings": "2.0.0-beta.2",
+    "rdf-data-factory": "^1.1.1",
+    "rdf-terms": "^1.9.0"
+  },
+  "scripts": {
+    "build": "npm run build:ts && npm run build:components",
+    "build:ts": "node \"../../node_modules/typescript/bin/tsc\"",
+    "build:components": "componentsjs-generator"
+  }
+}

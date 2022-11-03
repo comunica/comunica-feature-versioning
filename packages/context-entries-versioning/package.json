@@ -1,0 +1,39 @@
+{
+  "name": "@comunica/context-entries-versioning",
+  "version": "0.0.1",
+  "description": "A collection of reusable Comunica context key definitions for versioning.",
+  "main": "lib/index.js",
+  "typings": "lib/index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/comunica/comunica.git",
+    "directory": "packages/context-entries-versioning"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "keywords": [
+    "comunica",
+    "context",
+    "entries",
+    "keys"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/comunica/comunica-feature-versioning/issues"
+  },
+  "homepage": "https://comunica.dev/",
+  "files": [
+    "components",
+    "lib/**/*.d.ts",
+    "lib/**/*.js"
+  ],
+  "dependencies": {
+    "@comunica/core": "^2.2.0",
+    "@comunica/types-versioning": "^0.0.1"
+  },
+  "scripts": {
+    "build": "node \"../../node_modules/typescript/bin/tsc\""
+  }
+}

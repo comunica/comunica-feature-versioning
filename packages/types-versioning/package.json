@@ -1,0 +1,38 @@
+{
+  "name": "@comunica/types-versioning",
+  "version": "0.0.1",
+  "description": "Typings module for Comunica Versioning",
+  "lsd:module": true,
+  "main": "lib/index.js",
+  "typings": "lib/index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/comunica/comunica.git",
+    "directory": "packages/types-versioning"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "keywords": [
+    "comunica",
+    "types"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/comunica/comunica-feature-versioning/issues"
+  },
+  "homepage": "https://comunica.dev/",
+  "files": [
+    "components",
+    "lib/**/*.d.ts",
+    "lib/**/*.js",
+    "bin/**/*.d.ts",
+    "bin/**/*.js"
+  ],
+  "scripts": {
+    "build": "npm run build:ts && npm run build:components",
+    "build:ts": "node \"../../node_modules/types-versioningcript/bin/tsc\"",
+    "build:components": "componentsjs-generator"
+  }
+}

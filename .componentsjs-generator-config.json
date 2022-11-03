@@ -5,7 +5,8 @@
   ],
   "ignoreComponents": [
     "Headers",
-    "RDF.Stream"
+    "RDF.Stream",
+    "Promise"
   ],
   "modulePrefix": {}
 }

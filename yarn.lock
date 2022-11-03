@@ -2529,6 +2529,16 @@
   dependencies:
     "@rdfjs/types" "*"
 
+"@comunica/jest@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@comunica/jest/-/jest-2.4.0.tgz#2eb11eef30865a6f4f03b31593a9a5887da76e81"
+  integrity sha512-D2EmdQRg2klEKjtbpkrN2zJUDSdSblPjp1txiamUb5iDciehdSfbjqyZ52TStbnkfIXsnuUIumhXW+SDerD05w==
+  dependencies:
+    "@comunica/bindings-factory" "^2.2.0"
+    "@comunica/types" "^2.4.0"
+    "@rdfjs/types" "*"
+    arrayify-stream "^2.0.0"
+
 "@comunica/logger-pretty@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@comunica/logger-pretty/-/logger-pretty-2.4.0.tgz#7d3682a3019564e7baf59dea350b23816a832058"
@@ -11053,7 +11063,7 @@ spark-md5@^3.0.1:
   resolved "https://registry.yarnpkg.com/spark-md5/-/spark-md5-3.0.2.tgz#7952c4a30784347abcee73268e473b9c0167e3fc"
   integrity sha512-wcFzz9cDfbuqe0FZzfi2or1sgyIrsDwmPwfZC4hiNidPdPINjeUwNfv5kldczoEAcjl9Y1L3SM7Uz2PUEQzxQw==
 
-sparqlalgebrajs@^4.0.0, sparqlalgebrajs@^4.0.2:
+sparqlalgebrajs@^4.0.0, sparqlalgebrajs@^4.0.2, sparqlalgebrajs@^4.0.4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/sparqlalgebrajs/-/sparqlalgebrajs-4.0.4.tgz#803e29fc780d5f54235b791645bc73a016831703"
   integrity sha512-21t8cAyc6MEF1YpwU16FvtK963NNy1zwBAImki5ay5aJQzYAbmPcIzw1pz9x89YXuLcTW5QgXOSlQHDKjxElaA==

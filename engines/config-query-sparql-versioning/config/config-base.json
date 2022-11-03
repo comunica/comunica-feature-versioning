@@ -15,6 +15,7 @@
     "ccqs:config/init/actors.json",
     "ccqs:config/optimize-query-operation/actors.json",
     "ccqs:config/optimize-query-operation/mediators.json",
+    "ccqsv:config/query-operation/actors.json",
     "ccqs:config/query-operation/actors.json",
     "ccqs:config/query-operation/mediators.json",
     "ccqs:config/query-parse/actors.json",

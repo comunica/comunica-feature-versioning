@@ -46,6 +46,7 @@
     "@comunica/query-sparql": "^2.4.3",
     "@comunica/actor-init-query": "^2.4.3",
     "@comunica/runner-cli": "^2.4.0",
+    "@comunica/actor-query-operation-contextify-version": "^2.0.0",
     "@comunica/actor-rdf-resolve-quad-pattern-ostrich": "^2.0.0"
   },
   "scripts": {

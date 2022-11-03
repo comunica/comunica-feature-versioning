@@ -9,6 +9,7 @@
     "@babel/core": "^7.16.0",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.16.4",
+    "@comunica/jest": "^2.4.0",
     "rdf-data-factory": "^1.1.0",
     "@types/jest": "^29.0.0",
     "@types/node": "^16.0.0",

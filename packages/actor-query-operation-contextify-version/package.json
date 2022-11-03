@@ -1,14 +1,14 @@
 {
-  "name": "@comunica/actor-rdf-resolve-quad-pattern-ostrich",
+  "name": "@comunica/actor-query-operation-contextify-version",
   "version": "2.0.0",
-  "description": "A ostrich rdf-resolve-quad-pattern actor",
+  "description": "A contextify-version query-operation actor",
   "lsd:module": true,
   "main": "lib/index.js",
   "typings": "lib/index",
   "repository": {
     "type": "git",
     "url": "https://github.com/comunica/comunica.git",
-    "directory": "packages/actor-rdf-resolve-quad-pattern-ostrich"
+    "directory": "packages/actor-query-operation-contextify-version"
   },
   "publishConfig": {
     "access": "public"
@@ -17,12 +17,12 @@
   "keywords": [
     "comunica",
     "actor",
-    "rdf-resolve-quad-pattern",
-    "ostrich"
+    "query-operation",
+    "contextify-version"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/comunica/comunica-feature-versioning/issues"
+    "url": "https://github.com/comunica/comunica/issues"
   },
   "homepage": "https://comunica.dev/",
   "files": [
@@ -32,14 +32,10 @@
   ],
   "dependencies": {
     "@comunica/core": "^2.4.0",
-    "@comunica/context-entries": "^2.4.0",
     "@comunica/context-entries-versioning": "^2.0.0",
-    "@comunica/bus-rdf-resolve-quad-pattern": "^2.4.0",
     "@comunica/types-versioning": "^2.0.0",
-    "asynciterator": "^3.7.1",
-    "ostrich-bindings": "2.0.0-beta.2",
-    "rdf-data-factory": "^1.1.1",
-    "rdf-terms": "^1.9.0"
+    "@comunica/bus-query-operation": "^2.4.0",
+    "sparqlalgebrajs": "^4.0.4"
   },
   "scripts": {
     "build": "npm run build:ts && npm run build:components",

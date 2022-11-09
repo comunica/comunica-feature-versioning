@@ -12,7 +12,7 @@
     "@comunica/jest": "^2.4.0",
     "rdf-data-factory": "^1.1.0",
     "@types/jest": "^29.0.0",
-    "@types/node": "^16.0.0",
+    "@types/node": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "arrayify-stream": "^2.0.0",
@@ -82,6 +82,6 @@
   },
   "resolutions": {
     "@types/yargs": "17.0.13",
-    "@types/node": "18.0.0"
+    "@types/node": "^18.0.0"
   }
 }

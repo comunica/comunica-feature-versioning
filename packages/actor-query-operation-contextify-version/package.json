@@ -32,10 +32,10 @@
     "lib/**/*.js.map"
   ],
   "dependencies": {
-    "@comunica/core": "^2.4.0",
+    "@comunica/core": "^3.0.0",
     "@comunica/context-entries-versioning": "^2.0.0",
     "@comunica/types-versioning": "^2.0.0",
-    "@comunica/bus-query-operation": "^2.4.0",
+    "@comunica/bus-query-operation": "^3.0.0",
     "sparqlalgebrajs": "^4.0.4"
   },
   "scripts": {

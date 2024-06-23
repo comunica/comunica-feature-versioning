@@ -82,6 +82,6 @@
   },
   "resolutions": {
     "@types/yargs": "17.0.13",
-    "@types/node": "18.0.0"
+    "@types/node": "18.19.39"
   }
 }

@@ -1,29 +1,24 @@
 import type { IQuadSource } from '@comunica/bus-rdf-resolve-quad-pattern';
 import type { VersionContext } from '@comunica/types-versioning';
 import type { AsyncIterator } from 'asynciterator';
-import type { OstrichStore } from 'ostrich-bindings';
+import type { BufferedOstrichStore, OstrichStore } from 'ostrich-bindings';
 import type * as RDF from 'rdf-js';
-import { OstrichIterator } from './OstrichIterator';
+import { makeIterator } from './OstrichIterator';
 
 export class OstrichQuadSource implements IQuadSource {
-  protected readonly store: OstrichStore;
+  protected readonly store: OstrichStore | BufferedOstrichStore;
   protected readonly versionContext: VersionContext;
 
-  public constructor(store: OstrichStore, versionContext: VersionContext) {
+  public constructor(store: OstrichStore | BufferedOstrichStore, versionContext: VersionContext) {
     this.store = store;
     this.versionContext = versionContext;
   }
 
   public match(subject: RDF.Term, predicate: RDF.Term, object: RDF.Term, graph: RDF.Term): AsyncIterator<RDF.Quad> {
-    if (graph && graph.termType !== 'DefaultGraph') {
-      throw new Error('OstrichQuadSource only supports triple pattern queries within the default graph.');
+    if (graph && graph.termType !== 'DefaultGraph' && graph.termType !== 'Variable') {
+      throw new Error('OstrichQuadSource only supports triple pattern queries within the default graph or variable.');
     }
-    const it = new OstrichIterator(this.store,
-      this.versionContext,
-      subject,
-      predicate,
-      object,
-      { autoStart: false });
+    const it = makeIterator(this.store, this.versionContext, subject, predicate, object, { autoStart: false });
     this.count(subject, predicate, object)
       .then(countResult => it.setProperty('metadata', {
         cardinality: { type: countResult.exactCardinality ? 'exact' : 'estimate', value: countResult.cardinality },
@@ -46,8 +41,8 @@ export class OstrichQuadSource implements IQuadSource {
         return this.store.countTriplesDeltaMaterialized(subject,
           predicate,
           object,
-          this.versionContext.versionEnd,
-          this.versionContext.versionStart);
+          this.versionContext.versionStart,
+          this.versionContext.versionEnd);
       case 'version-query':
         return this.store.countTriplesVersion(subject, predicate, object);
     }

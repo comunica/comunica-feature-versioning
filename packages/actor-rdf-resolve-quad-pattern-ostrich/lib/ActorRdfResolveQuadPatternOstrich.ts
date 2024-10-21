@@ -10,17 +10,17 @@ import { KeysRdfResolveQuadPattern } from '@comunica/context-entries-versioning'
 import type { IActorArgs, IActorTest, ActionContext } from '@comunica/core';
 import type { VersionContext } from '@comunica/types-versioning';
 import type * as RDF from '@rdfjs/types';
-import type { OstrichStore } from 'ostrich-bindings';
-import { fromPath } from 'ostrich-bindings';
+import type { OstrichStore, BufferedOstrichStore } from 'ostrich-bindings';
+import { fromPath, fromPathBuffered } from 'ostrich-bindings';
 import { OstrichQuadSource } from './OstrichQuadSource';
 
 /**
- * A comunica OSTRICH RDF Resolve Quad Pattern Actor.
+ * A Comunica OSTRICH RDF Resolve Quad Pattern Actor.
  */
 export class ActorRdfResolveQuadPatternOstrich extends ActorRdfResolveQuadPatternSource
   implements IActorRdfResolveQuadPatternOstrichArgs {
   public readonly ostrichFiles?: string[];
-  public stores: Record<string, Promise<OstrichStore>> = {};
+  public stores: Record<string, Promise<OstrichStore | BufferedOstrichStore>> = {};
   public closed = false;
 
   protected shouldClose: boolean;
@@ -30,13 +30,17 @@ export class ActorRdfResolveQuadPatternOstrich extends ActorRdfResolveQuadPatter
     super(args);
   }
 
-  public initializeOstrich(ostrichPath: string): Promise<any> {
+  public initializeOstrich(ostrichPath: string, useBuffering = false, bufferSize = 128): Promise<any> {
+    if (useBuffering) {
+      // eslint-disable-next-line no-return-assign
+      return this.stores[ostrichPath] = fromPathBuffered(ostrichPath, bufferSize, { readOnly: true });
+    }
     // eslint-disable-next-line no-return-assign
     return this.stores[ostrichPath] = fromPath(ostrichPath, { readOnly: true });
   }
 
   public async initialize(): Promise<any> {
-    (this.ostrichFiles || []).forEach(ostrichFile => this.initializeOstrich(ostrichFile));
+    (this.ostrichFiles || []).forEach(ostrichFile => this.initializeOstrich(ostrichFile, true, 128));
     return null;
   }
 
@@ -65,8 +69,8 @@ export class ActorRdfResolveQuadPatternOstrich extends ActorRdfResolveQuadPatter
     if (!hasContextSingleSourceOfType('ostrichFile', action.context)) {
       throw new Error(`${this.name} requires a single source with a ostrichFile to be present in the context.`);
     }
-    if (action.pattern.graph.termType !== 'DefaultGraph') {
-      throw new Error(`${this.name} can only perform versioned queries in the default graph.`);
+    if (action.pattern.graph.termType !== 'DefaultGraph' && action.pattern.graph.termType !== 'Variable') {
+      throw new Error(`${this.name} can only perform versioned queries in the default graph or variable.`);
     }
     if (action.context.has(KeysRdfResolveQuadPattern.version) &&
       (action.context.getSafe<VersionContext>(KeysRdfResolveQuadPattern.version).type !== 'version-materialization' &&
@@ -87,7 +91,7 @@ export class ActorRdfResolveQuadPatternOstrich extends ActorRdfResolveQuadPatter
     const ostrichFile: string = (<any> getContextSource(context)).value;
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     if (!this.stores[ostrichFile]) {
-      await this.initializeOstrich(ostrichFile);
+      await this.initializeOstrich(ostrichFile, true, 128);
     }
     return new OstrichQuadSource(
       await this.stores[ostrichFile],

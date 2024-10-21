@@ -79,7 +79,12 @@ export class ActorQueryOperationContextifyVersion extends ActorQueryOperation
     let operation: Algebra.Operation | undefined;
     const versionContext: any = {};
     let valid = false;
-    if (action.operation.type === 'pattern' && action.operation.graph.termType !== 'DefaultGraph') {
+    if (action.operation.type === 'pattern' && action.operation.graph.termType === 'Variable') {
+      // Version query
+      valid = true;
+      operation = action.operation;
+      versionContext.type = 'version-query';
+    } else if (action.operation.type === 'pattern' && action.operation.graph.termType !== 'DefaultGraph') {
       // Version materialization
       valid = true;
 
